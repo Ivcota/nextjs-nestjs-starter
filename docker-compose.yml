@@ -23,12 +23,15 @@ services:
       context: backend
       dockerfile: ./Dockerfile
       target: dev
+    environment:
+      DATABASE_URL: postgresql://postgres:secret123@db:5432/devdb
     volumes:
       - ./backend:/usr/src/app
     ports:
       - 3000:3000
-    depends_on:
+    links:
       - db
+    restart: on-failure
   db:
     image: postgres:16
     ports:

@@ -8,7 +8,7 @@ RUN npm install
 EXPOSE 3000
 RUN chown -R node /usr/src/app
 USER node
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:dev:db"]
 
 FROM base as prod
 ENV NODE_ENV=production
