@@ -9,11 +9,11 @@ services:
       target: dev
     environment:
       NODE_ENV: development
+      NEXT_PUBLIC_BASE_ROUTE: http://127.0.0.1:3000
     ports:
       - 8080:8080
     volumes:
       - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
     depends_on:
       - db
       - backend
@@ -23,8 +23,6 @@ services:
       context: backend
       dockerfile: ./Dockerfile
       target: dev
-    environment:
-      NODE_ENV: development
     volumes:
       - ./backend:/usr/src/app
     ports:
